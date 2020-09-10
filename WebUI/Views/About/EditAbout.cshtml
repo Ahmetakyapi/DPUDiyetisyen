@@ -1,0 +1,116 @@
+﻿@model WebUI.Models.About
+@{
+    ViewBag.Title = "EditAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hakkımda Ekle</h4>
+            <p class="card-description">
+                Hakkımda Bilgileri
+            </p>
+            <form action="@Url.Action("EditAbout", "About")" method="post" enctype="multipart/form-data" class="forms-sample">
+                <div class="form-group">
+                    <label for="name">Başlık</label>
+                    <input type="text" class="form-control" value="@Model.header" id="header" name="header" placeholder="Başlık">
+                </div>
+                <div class="form-group">
+                    <label for="description">Hakkında</label>
+                    @Html.TextAreaFor(model => model.description, new { @class = "form-control", @rows = 20 })
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Doğum Tarihi</label>
+                    <input type="text" class="form-control" name="birthOfDate" value="@Model.birthOfDate" id="birthOfDate" placeholder="Doğum Tarihi">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Şehir</label>
+                    <input type="text" class="form-control" name="cityName" value="@Model.cityName" id="cityName" placeholder="Şehir">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Favori</label>
+                    <input type="text" class="form-control" name="favorites" value="@Model.favorites" id="favorites" placeholder="Favoriler">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">İş Deneyimi</label>
+                    <input type="text" class="form-control" name="workExperiences" value="@Model.workExperiences" id="workExperiences" placeholder="İş Deneyimi">
+                </div>
+
+                <div class="form-group">
+                    <label>Profil resmi</label>
+
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control" name="imagePath" value="@Model.imagePath" id="imagePath" placeholder="Resim Yolu">
+                        <span class="input-group-append">
+
+                            <label class="file-upload-browse btn btn-primary">
+                                Yükle&hellip; <input type="file" name="imagePath" id="imagePath" style="display: none;">
+                            </label>
+
+                            @* <button class="" onclick="performClick('uploadPhoto');" name="uploadPhoto" id="uploadPhoto" type="button">Yükle</button>*@
+                        </span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        // We can attach the `fileselect` event to all file inputs on the page
+        $(document).on('change', ':file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        // We can watch for our custom `fileselect` event like this
+        $(document).ready(function () {
+            $(':file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+   function show(input) {
+      if (input.files && input.files[0]) {
+      var filerdr = new FileReader();
+      filerdr.onload = function (e) {
+         $('#imagePath').attr('src', e.target.result);
+      }
+      filerdr.readAsDataURL(input.files[0]);
+   }
+}
+</script>
+

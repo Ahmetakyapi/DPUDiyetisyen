@@ -1,0 +1,35 @@
+﻿@model WebUI.Models.About
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<main class="main-content">
+
+    <div class="author-bio">
+        <div class="container">
+            <div class="row">
+                @if (@Model != null)
+                {
+    <div class="col-md-5">
+        <figure class="profile-picture">
+            <img src="@Model.imagePath" alt="">
+        </figure>
+    </div>
+                    <div class="col-md-6 col-md-offset-1">
+                        <h3>
+                            @Model.header
+                        </h3>
+                        <p>@Model.description </p>
+                        <ul class="person-detail">
+                            <li><span class="icon"><img src="~/wwwroot/images/icons/icon-baby.png"></span>Doğum Tarihi: <strong>@Model.birthOfDate</strong></li>
+                            <li><span class="icon"><img src="~/wwwroot/images/icons/icon-map-marker.png"></span>Şehir: <strong>@Model.cityName</strong></li>
+                            <li><span class="icon"><img src="~/wwwroot/images/icons/icon-heart.png"></span>Favoriler: <strong>@Model.favorites</strong></li>
+                            <li><span class="icon"><img src="~/wwwroot/images/icons/icon-clock.png"></span>İş Deneyimi: <strong>@Model.workExperiences</strong></li>
+                        </ul>
+                    </div>}
+            </div>
+        </div>
+    </div>
+
+</main>
+

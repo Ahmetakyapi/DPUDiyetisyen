@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content">
+
+    <div class="content">
+        <div class="container">
+
+            <h2 class="entry-title">
+                İletişim Bilgisi <br>
+                Beni burada bulabilirsin...
+            </h2>
+            <p>Herhangi bir konuda yardım almak, görüşlerinizi belirtmek ve kendinize özel planı oluşturmamız için lütfen benimle iletişime geçin...</p>
+
+            <div class="contact-detail">
+                <span class="location"><img src="~/wwwroot/images/icons/icon-map-marker-alt.png"> 43 Dumlupınar Üniversitesi, Kütahya</span>
+                <span class="email"><img src="~/wwwroot/images/icons/icon-envelope.png"> <a href="mailto:dpüdiyetisyen@dpü.com">dpüdiyetisyen@dpü.com</a></span>
+                <span class="phone"><img src="~/wwwroot/images/icons/icon-phone.png"> <a href="tel:(942)321490234">+90 (531) 772 16 68</a></span>
+            </div>
+
+            <div class="map"></div>
+
+            <form action="@Url.Action("Contact", "Home")" method="post" enctype="multipart/form-data" class="forms-sample">
+                <div class="contact-form">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Adınız..." name="name" id="name">
+                            <input type="text" placeholder="E-posta..." name="mail" id="mail">
+                            <input type="text" placeholder="Telefon..." name="phone" id="phone">
+                        </div>
+                        <div class="col-md-7">
+                            <textarea placeholder="Mesajınız" name="message" id="message"></textarea>
+                            <input type="submit" >
+                        </div>
+                    </div>
+                </div>
+                </form>
+        </div>
+    </div>
+
+</main>
+

@@ -1,0 +1,62 @@
+﻿
+@model WebUI.Models.Recipes
+
+@{
+    ViewBag.Title = "RecipeDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content">
+
+    <div class="content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <figure><img width="400px;" height="500px;" src="@Model.imagePath"></figure>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+                    <h2 class="entry-title">@Model.name</h2>
+                    <div class="recipe-meta">
+                        <span class="time"><img src="~/wwwroot/images/icons/icon-time.png"> @Model.foodTime</span>
+                        <span class="calorie"><img src="~/wwwroot/images/icons/icon-pie-chart.png"> @Model.forWhoPerson</span>
+
+                    </div>
+                    <div class="ingredient">
+                        <h3>İçindekiler</h3>
+                        <table>
+                            <tr>
+                                <td><strong>8 adet</strong></td>
+                                <td>Kuşkonmaz (Sert kısımları alınmış, Alt kısımları soyulmuş)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10 adet</strong></td>
+                                <td>Yumurta (Çırpılmış)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1 Su Bardağı</strong></td>
+                                <td>
+                                    Toz Parmesan Peyniri (Arzuya göre rendelenmiş kaşar peyniri)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>1 Çay Kaşığı</strong></td>
+                                <td>Tuz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1/2 Çay Kaşığı</strong></td>
+                                <td>Karabiber</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2 Yemek Kaşığı</strong></td>
+                                <td>Tereyağı</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <p> <h2> @Model.name</p></h2>
+                    <p>
+                        @Model.content
+                    </p>
+
+
+</main> <!-- .main-content -->

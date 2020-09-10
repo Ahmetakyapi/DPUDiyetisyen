@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="TR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>DPÜ DİYETİSYEN</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|" rel="stylesheet" type="text/css">
+    <link href="~/wwwroot/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/wwwroot/fonts/iconmoon.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/style.css">
+
+</head>
+
+
+<body>
+
+    <div id="site-content">
+        <header class="site-header">
+            <div class="container">
+                <a href="Home/Home" id="branding" class="pull-left">
+                    <i class="icon-cupcake logo"></i>
+                    <h1 class="site-title">DPÜ DİYETİSYEN</h1>
+                </a>
+
+                <div class="main-navigation pull-right">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item"><a href="/Home/About">Hakkımda</a></li>
+                        <li class="menu-item"><a href="/Home/Proposal">Önerilerim</a></li>
+                        <li class="menu-item"><a href="/Home/Recipes">Tarifler</a></li>
+                        <li class="menu-item"><a href="/Home/Contact">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div class="mobile-navigation"></div>
+            </div>
+        </header>
+    </div>
+
+    <div>
+        @RenderBody();
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <i class="icon-cupcake logo"></i>
+            <nav class="footer-navigation">
+                <a href="/Home/About">Hakkımda</a>
+                <a href="/Home/Proposal">Önerilerim</a>
+                <a href="/Home/Recipes">Tarifler</a>
+                <a href="/Home/Contact">İletişim</a>
+            </nav>
+            <div class="subscribe">
+                <form action="#">
+                    <input type="text" placeholder="Abone Olmak İçin E-postanızı giriniz.">
+                    <input type="submit" value="Abone Ol">
+                </form>
+            </div>
+            <div class="social-links">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-facebook"></a>
+            </div>
+            <div class="colophon">
+                <p>Copyright 2020 DPU DİYETİSYEN. Designed by AA. All right reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/wwwroot/js/jquery-1.11.1.min.js"></script>
+    <script src="~/wwwroot/js/plugins.js"></script>
+    <script src="~/wwwroot/js/app.js"></script>
+
+
+</body>
+</html>

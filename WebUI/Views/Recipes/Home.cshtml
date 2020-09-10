@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WebUI.Models.Recipes>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //start of the document ready function
+            //delcaring global variable to hold primary key value.
+            var recipeId;
+            $('.btn-fw').click(function () {
+                recipeId = $(this).attr('id');
+                $('#myModal').modal('show');
+            });
+
+            $('.delete-confirm').click(function () {
+                if (recipeId != '') {
+                    $.ajax({
+                        url: '/Recipes/DeleteRecipe',
+                        data: { 'recipeId': recipeId },
+                        type: 'get',
+                        success: function (data) {
+                            if (data) {
+
+                                if ($('.modal-header').hasClass('alert-danger')) {
+                                    $('.modal-header').removeClass('alert-danger').addClass('alert-success');
+                                    $('.delete-confirm').css('display', 'none');
+                                }
+                                $('#myModal').modal('hide');
+                                location.reload();
+                            }
+                        }, error: function (err) {
+                            if (!$('.modal-header').hasClass('alert-danger')) {
+                                $('.modal-header').removeClass('alert-success').addClass('alert-danger');
+                                $('.delete-confirm').css('display', 'none');
+                            }
+                            $('.success-message').html(err.statusText);
+                        }
+                    });
+                }
+            });
+
+
+            $("#myModal").on("hidden.bs.modal", function () {
+                $(".modal-header").removeClass(' ').addClass('alert-danger');
+                $('.delete-confirm').css('display', 'inline-block');
+                $('.success-message').html('').html('Kaydı silmek istediğinize emin misiniz?');
+            });
+
+        });
+    </script>
+</head>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Makaleler</h4> <input type="button" class="btn btn-success btn-rounded btn-fw" value="Ekle" onclick="@("window.location.href='" + @Url.Action("AddRecipe", "Recipes") + "'");" />
+            <p class="card-description">
+
+            </p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>İsmi</th>
+                            <th>Özeti</th>
+                            <th width="50%">İçerik</th>
+                            <th>Süre</th>
+                            <th>Kişi Sayısı</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.name</td>
+
+                                <td>@item.content</td>
+                                <td>@item.description</td>
+                                <td>@item.foodTime</td>
+                                <td>@item.forWhoPerson</td>
+                                <td><a href="@Url.Action("EditRecipe","Recipes", new {id=item.Id})" class="btn btn-primary btn-rounded btn-fw">Düzenle</a> <a href="javascript:void(0)" id="@item.Id" class="btn btn-danger btn-rounded btn-fw">Sil</a> </td>
+
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger">
+
+                <h4 class="modal-title" id="myModalLabel">Bilgi Kutusu</h4>
+            </div>
+            <div class="modal-body">
+                <p class="success-message">Kaydı silmek istediğinize emin misiniz? </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success delete-confirm">Evet</button>
+                <button class="btn btn-default" data-dismiss="modal">İptal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

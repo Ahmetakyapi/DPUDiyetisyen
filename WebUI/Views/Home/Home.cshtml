@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebUI.Models.Article>
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero">
+    <div class="container">
+        <i class="icon-cupcake logo"></i>
+        <h1 class="site-title">DPÜ Diyetisyen</h1>
+        <small class="site-description">Profesyonel Diyetisyen</small>
+    </div>
+</div>
+
+<main class="main-content">
+
+    @foreach (var item in Model)
+    {
+        <div class="fullwidth-block cooking-section category-block">
+            <div class="container">
+                <figure><img src="@item.imagePath"  alt="cooking"></figure>
+                <div class="category-content">
+                    <h1 class="category-title">@item.name</h1>
+                    <p>
+                        @item.description
+                    </p>
+                    @*<a href="/Article/ArticleDetail/@item.Id" class="button">Okumaya Devam Et</a>   *@
+                    <a class="button" href="@Url.Action("ArticleDetail","Article", new {id=item.Id})">    Okumaya Devam Et </a>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+    }
+
+</main>
+

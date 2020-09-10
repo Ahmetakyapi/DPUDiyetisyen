@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "AddRecipe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Makale Ekle</h4>
+            <p class="card-description">
+                Makale Bilgileri
+            </p>
+            <form action="@Url.Action("AddRecipe", "Recipes")" method="post" enctype="multipart/form-data" class="forms-sample">
+                <div class="form-group">
+                    <label for="name">Adı</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Makale Adı">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Özet</label>
+                    <input type="text" class="form-control" id="content" name="content" placeholder="Makale Adı">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Kaç Kişilik</label>
+                    <input type="text" class="form-control" id="forWhoPerson" name="forWhoPerson" placeholder="Kaç Kişilik">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Süre</label>
+                    <input type="text" class="form-control" id="foodTime" name="foodTime" placeholder="Süre">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">İçerik</label>
+                    <textarea class="form-control" name="description" id="description" rows="20" placeholder="İçerik"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Makale Resimi</label>
+
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control" name="imagePath" id="imagePath" placeholder="Resim Yolu">
+                        <span class="input-group-append">
+
+                            <label class="file-upload-browse btn btn-primary">
+                                Yükle&hellip; <input type="file" name="imagePath" id="imagePath" style="display: none;">
+                            </label>
+
+                            @* <button class="" onclick="performClick('uploadPhoto');" name="uploadPhoto" id="uploadPhoto" type="button">Yükle</button>*@
+                        </span>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        // We can attach the `fileselect` event to all file inputs on the page
+        $(document).on('change', ':file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        // We can watch for our custom `fileselect` event like this
+        $(document).ready(function () {
+            $(':file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#imagePath').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+

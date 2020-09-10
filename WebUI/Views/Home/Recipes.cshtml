@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebUI.Models.Recipes>
+
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content">
+
+    <div class="content">
+        <div class="container">
+
+            <h2 class="entry-title">Çoğumuzun ortak dilekleri forma girmek, sağlıklı beslenmek ve biraz da kilo vermek oldu.</h2>
+            <p>Siz de böyle düşünenlerden, yediklerine dikkat etmek isteyen ama salata ile de boğuşmak istemeyenlerdenseniz tam da damağınıza layık harika tarifler sıralıyoruz şimdi. Bu sağlıklı yemek tarifleri ile hedeflerinize ulaşmak çok daha kolay, çok daha lezzetli olacak! </p>
+
+            <div class="recipes-list">
+
+                @foreach (var item in Model)
+                {
+                    <article class="recipe">
+                        <figure class="recipe-image"><img src="@item.imagePath" alt="Food 2"></figure>
+                        <div class="recipe-detail">
+                            <h2 class="recipe-title"><a href="@Url.Action("RecipeDetail","Recipes", new {id=item.Id})">@item.name</a></h2>
+                            <p>@item.content</p>
+                            <div class="recipe-meta">
+                                <span class="time"><img src="~/wwwroot/images/icons/icon-time.png"> @item.foodTime</span>
+                                <span class="calorie"><img src="~/wwwroot/images/icons/icon-pie-chart.png"> @item.forWhoPerson</span>
+
+                            </div>
+                        </div>
+                    </article>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+</main>
+

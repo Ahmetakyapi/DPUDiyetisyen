@@ -1,0 +1,536 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{857CED46-7DCE-4E56-991C-B8CAE4A4804E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebUI</RootNamespace>
+    <AssemblyName>WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="wwwroot\Admin\css\style.css" />
+    <Content Include="wwwroot\Admin\images\auth\lockscreen-bg.jpg" />
+    <Content Include="wwwroot\Admin\images\auth\login-bg.jpg" />
+    <Content Include="wwwroot\Admin\images\auth\register-bg.jpg" />
+    <Content Include="wwwroot\Admin\images\dashboard\bg.png" />
+    <Content Include="wwwroot\Admin\images\dashboard\face29.png" />
+    <Content Include="wwwroot\Admin\images\dashboard\live.png" />
+    <Content Include="wwwroot\Admin\images\faces\face1.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face10.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face11.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face12.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face13.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face14.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face15.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face16.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face17.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face18.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face19.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face2.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face20.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face21.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face22.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face23.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face24.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face25.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face26.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face27.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face28.png" />
+    <Content Include="wwwroot\Admin\images\faces\face3.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face4.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face5.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face6.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face7.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face8.jpg" />
+    <Content Include="wwwroot\Admin\images\faces\face9.jpg" />
+    <Content Include="wwwroot\Admin\images\favicon.png" />
+    <Content Include="wwwroot\Admin\images\logo-mini.svg" />
+    <Content Include="wwwroot\Admin\images\logo.svg" />
+    <Content Include="wwwroot\Admin\js\chart.js" />
+    <Content Include="wwwroot\Admin\js\dashboard.js" />
+    <Content Include="wwwroot\Admin\js\file-upload.js" />
+    <Content Include="wwwroot\Admin\js\select2.js" />
+    <Content Include="wwwroot\Admin\js\template.js" />
+    <Content Include="wwwroot\Admin\js\typeahead.js" />
+    <Content Include="wwwroot\Admin\vendors\base\vendor.bundle.base.css" />
+    <Content Include="wwwroot\Admin\vendors\base\vendor.bundle.base.js" />
+    <Content Include="wwwroot\Admin\vendors\chart.js\Chart.min.js" />
+    <Content Include="wwwroot\Admin\vendors\chartjs-plugin-datalabels\chartjs-plugin-datalabels.js" />
+    <Content Include="wwwroot\Admin\vendors\chartjs-plugin-datalabels\chartjs-plugin-datalabels.min.js" />
+    <Content Include="wwwroot\Admin\vendors\jquery-file-upload\uploadfile.css" />
+    <Content Include="wwwroot\Admin\vendors\justgage\justgage.js" />
+    <Content Include="wwwroot\Admin\vendors\justgage\raphael-2.1.4.min.js" />
+    <Content Include="wwwroot\Admin\vendors\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="wwwroot\Admin\vendors\jvectormap\jquery-jvectormap.css" />
+    <Content Include="wwwroot\Admin\vendors\jvectormap\jquery-jvectormap.min.js" />
+    <Content Include="wwwroot\Admin\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="wwwroot\Admin\vendors\progressbar.js\progressbar.min.js" />
+    <Content Include="wwwroot\Admin\vendors\raphael\raphael.min.js" />
+    <Content Include="wwwroot\Admin\vendors\select2-bootstrap-theme\select2-bootstrap.min.css" />
+    <Content Include="wwwroot\Admin\vendors\select2\select2.min.css" />
+    <Content Include="wwwroot\Admin\vendors\select2\select2.min.js" />
+    <Content Include="wwwroot\Admin\vendors\typeahead.js\typeahead.bundle.min.js" />
+    <Content Include="wwwroot\css\style.css" />
+    <Content Include="wwwroot\fonts\font-awesome.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\fonts\icomoon.svg" />
+    <Content Include="wwwroot\fonts\iconmoon.css" />
+    <Content Include="wwwroot\images\icons\icon-baby%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-baby.png" />
+    <Content Include="wwwroot\images\icons\icon-clock%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-clock.png" />
+    <Content Include="wwwroot\images\icons\icon-comment%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-comment.png" />
+    <Content Include="wwwroot\images\icons\icon-envelope%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-envelope%402xx.png" />
+    <Content Include="wwwroot\images\icons\icon-envelope.png" />
+    <Content Include="wwwroot\images\icons\icon-heart%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-heart.png" />
+    <Content Include="wwwroot\images\icons\icon-map-marker%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-map-marker-alt%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-map-marker-alt.png" />
+    <Content Include="wwwroot\images\icons\icon-map-marker.png" />
+    <Content Include="wwwroot\images\icons\icon-phone%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-phone.png" />
+    <Content Include="wwwroot\images\icons\icon-pie-chart%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-pie-chart.png" />
+    <Content Include="wwwroot\images\icons\icon-time%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-time.png" />
+    <Content Include="wwwroot\images\icons\icon-user%402x.png" />
+    <Content Include="wwwroot\images\icons\icon-user.png" />
+    <Content Include="wwwroot\images\icons\map-marker%402x.png" />
+    <Content Include="wwwroot\images\icons\map-marker.png" />
+    <Content Include="wwwroot\images\staticImages\araOgun.jpg" />
+    <Content Include="wwwroot\images\staticImages\bigImg\avokadolu-cikolatali-mus-tarifi.jpg" />
+    <Content Include="wwwroot\images\staticImages\bigImg\cooking%402x.png" />
+    <Content Include="wwwroot\images\staticImages\bigImg\firinda-kuskonmazli-omlet-tarifi.jpg" />
+    <Content Include="wwwroot\images\staticImages\bigImg\firinda-sutlu-kabak-yemekcom.jpg" />
+    <Content Include="wwwroot\images\staticImages\bigImg\fruits%402x.png" />
+    <Content Include="wwwroot\images\staticImages\bigImg\restaurant%402x.png" />
+    <Content Include="wwwroot\images\staticImages\bigImg\sekersiz-mozaik-pasta.jpg" />
+    <Content Include="wwwroot\images\staticImages\bigImg\vegetables%402x.png" />
+    <Content Include="wwwroot\images\staticImages\bigImg\yesil-detoks-corbasi-tarifi.jpg" />
+    <Content Include="wwwroot\images\staticImages\fiziksel.jpg" />
+    <Content Include="wwwroot\images\staticImages\kahvalti.jpg" />
+    <Content Include="wwwroot\images\staticImages\kemikler.jpg" />
+    <Content Include="wwwroot\images\staticImages\person.jpg" />
+    <Content Include="wwwroot\images\staticImages\smallImg\avokadolu-cikolatali-mus-tarifi-kucuk-resim.jpg" />
+    <Content Include="wwwroot\images\staticImages\smallImg\cooking.png" />
+    <Content Include="wwwroot\images\staticImages\smallImg\firinda-kuskonmazli-omlet-tarifi-kucuk-resim.jpg" />
+    <Content Include="wwwroot\images\staticImages\smallImg\firinda-sutlu-kabak-yemekcom-kucuk-resim.jpg" />
+    <Content Include="wwwroot\images\staticImages\smallImg\fruits.png" />
+    <Content Include="wwwroot\images\staticImages\smallImg\restaurant.png" />
+    <Content Include="wwwroot\images\staticImages\smallImg\sekersiz-mozaik-pasta-kucuk-resim.jpg" />
+    <Content Include="wwwroot\images\staticImages\smallImg\vegetables.png" />
+    <Content Include="wwwroot\images\staticImages\smallImg\yesil-detoks-corbasi-tarifi-kucuk-resim.jpg" />
+    <Content Include="wwwroot\images\staticImages\yorum-avatar.jpg" />
+    <Content Include="wwwroot\js\app.js" />
+    <Content Include="wwwroot\js\jquery-1.11.1.min.js" />
+    <Content Include="wwwroot\js\min\app-min.js" />
+    <Content Include="wwwroot\js\min\plugins-min.js" />
+    <Content Include="wwwroot\js\plugins.js" />
+    <Content Include="wwwroot\Admin\css\.DS_Store" />
+    <Content Include="wwwroot\Admin\css\maps\.DS_Store" />
+    <Content Include="wwwroot\Admin\css\maps\horizontal-layout-light\style.css.map" />
+    <Content Include="wwwroot\Admin\css\maps\style.css.map" />
+    <Content Include="wwwroot\Admin\fonts\.DS_Store" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\.DS_Store" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Black.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Black.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Black.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Black.woff2" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Bold.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Bold.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Bold.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Bold.woff2" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-ExtraLight.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-ExtraLight.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-ExtraLight.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-ExtraLight.woff2" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Light.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Light.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Light.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Light.woff2" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Regular.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Regular.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Regular.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-Regular.woff2" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-SemiBold.eot" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-SemiBold.ttf" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-SemiBold.woff" />
+    <Content Include="wwwroot\Admin\fonts\sourcesanspro\SourceSansPro-SemiBold.woff2" />
+    <Content Include="wwwroot\Admin\images\.DS_Store" />
+    <Content Include="wwwroot\Admin\images\auth\.DS_Store" />
+    <Content Include="wwwroot\Admin\images\dashboard\.DS_Store" />
+    <Content Include="wwwroot\Admin\images\faces\.DS_Store" />
+    <Content Include="wwwroot\Admin\js\.DS_Store" />
+    <Content Include="wwwroot\Admin\scss\.DS_Store" />
+    <Content Include="wwwroot\Admin\scss\common.scss" />
+    <Content Include="wwwroot\Admin\scss\components\.DS_Store" />
+    <Content Include="wwwroot\Admin\scss\components\plugin-overrides\.DS_Store" />
+    <Content Include="wwwroot\Admin\scss\components\plugin-overrides\_jvectormap.scss" />
+    <Content Include="wwwroot\Admin\scss\components\plugin-overrides\_progressbar-js.scss" />
+    <Content Include="wwwroot\Admin\scss\components\plugin-overrides\_typeahead.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_bootstrap-progress.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_buttons.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_cards.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_checkbox-radio.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_dropdown.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_forms.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_icons.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_lists.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_preview.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_tables.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_tabs.scss" />
+    <Content Include="wwwroot\Admin\scss\components\_toggle-switch.scss" />
+    <Content Include="wwwroot\Admin\scss\landing-screens\_auth.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\.DS_Store" />
+    <Content Include="wwwroot\Admin\scss\mixins\_animation.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\_blockqoute.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\_buttons.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\_cards.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\_menu.scss" />
+    <Content Include="wwwroot\Admin\scss\mixins\_misc.scss" />
+    <Content Include="wwwroot\Admin\scss\style.scss" />
+    <Content Include="wwwroot\Admin\scss\_background.scss" />
+    <Content Include="wwwroot\Admin\scss\_dashboard.scss" />
+    <Content Include="wwwroot\Admin\scss\_demo.scss" />
+    <Content Include="wwwroot\Admin\scss\_fonts.scss" />
+    <Content Include="wwwroot\Admin\scss\_footer.scss" />
+    <Content Include="wwwroot\Admin\scss\_functions.scss" />
+    <Content Include="wwwroot\Admin\scss\_horizontal-menu.scss" />
+    <Content Include="wwwroot\Admin\scss\_horizontal-wrappers.scss" />
+    <Content Include="wwwroot\Admin\scss\_misc.scss" />
+    <Content Include="wwwroot\Admin\scss\_reset.scss" />
+    <Content Include="wwwroot\Admin\scss\_typography.scss" />
+    <Content Include="wwwroot\Admin\scss\_utilities.scss" />
+    <Content Include="wwwroot\Admin\scss\_variables.scss" />
+    <Content Include="wwwroot\Admin\vendors\.DS_Store" />
+    <Content Include="wwwroot\Admin\vendors\base\bootstrap.min.js.map" />
+    <Content Include="wwwroot\Admin\vendors\mdi\css\materialdesignicons.min.css.map" />
+    <Content Include="wwwroot\Admin\vendors\mdi\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="wwwroot\Admin\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="wwwroot\Admin\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="wwwroot\Admin\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="wwwroot\Admin\vendors\progressbar.js\progressbar.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AboutController.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\ArticleController.cs" />
+    <Compile Include="Controllers\Admin\ProposalController.cs" />
+    <Compile Include="Controllers\Admin\RecipesController.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005061136190_FirstMig.cs" />
+    <Compile Include="Migrations\202005061136190_FirstMig.designer.cs">
+      <DependentUpon>202005061136190_FirstMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006141413392_14062020v1.cs" />
+    <Compile Include="Migrations\202006141413392_14062020v1.designer.cs">
+      <DependentUpon>202006141413392_14062020v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006141603142_14062020v2.cs" />
+    <Compile Include="Migrations\202006141603142_14062020v2.designer.cs">
+      <DependentUpon>202006141603142_14062020v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006160946282_myLastMig.cs" />
+    <Compile Include="Migrations\202006160946282_myLastMig.designer.cs">
+      <DependentUpon>202006160946282_myLastMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006161305492_16062020myMig.cs" />
+    <Compile Include="Migrations\202006161305492_16062020myMig.designer.cs">
+      <DependentUpon>202006161305492_16062020myMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162153123_insLastMig.cs" />
+    <Compile Include="Migrations\202006162153123_insLastMig.designer.cs">
+      <DependentUpon>202006162153123_insLastMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162219050_myMig.cs" />
+    <Compile Include="Migrations\202006162219050_myMig.designer.cs">
+      <DependentUpon>202006162219050_myMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162234556_buSonMig.cs" />
+    <Compile Include="Migrations\202006162234556_buSonMig.designer.cs">
+      <DependentUpon>202006162234556_buSonMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162310287_buSonMig2.cs" />
+    <Compile Include="Migrations\202006162310287_buSonMig2.designer.cs">
+      <DependentUpon>202006162310287_buSonMig2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162339245_myMig4.cs" />
+    <Compile Include="Migrations\202006162339245_myMig4.designer.cs">
+      <DependentUpon>202006162339245_myMig4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006162350504_myMig5.cs" />
+    <Compile Include="Migrations\202006162350504_myMig5.designer.cs">
+      <DependentUpon>202006162350504_myMig5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\About.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DiyetisyenContext.cs" />
+    <Compile Include="Models\ProposalContext.cs" />
+    <Compile Include="Models\ProposalHeader.cs" />
+    <Compile Include="Models\Recipes.cs" />
+    <Compile Include="Models\RecipesContents.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\VisitorMessages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Proposal.cshtml" />
+    <Content Include="Views\Home\Recipes.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Admin\Article.cshtml" />
+    <Content Include="Views\Admin\AddArticle.cshtml" />
+    <Content Include="Views\Article\ArticleDetail.cshtml" />
+    <Content Include="Views\Article\EditArticle.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\AddAbout.cshtml" />
+    <Content Include="Views\About\EditAbout.cshtml" />
+    <Content Include="Views\Proposal\Home.cshtml" />
+    <Content Include="Views\Proposal\AddProposalHeader.cshtml" />
+    <Content Include="Views\Proposal\EditProposalHeader.cshtml" />
+    <Content Include="Views\Proposal\AddProposalContext.cshtml" />
+    <Content Include="Views\Proposal\EditProposalContext.cshtml" />
+    <Content Include="Views\Recipes\Home.cshtml" />
+    <Content Include="Views\Recipes\AddRecipe.cshtml" />
+    <Content Include="Views\Recipes\EditRecipe.cshtml" />
+    <Content Include="Views\Admin\Contact.cshtml" />
+    <Content Include="Views\Recipes\RecipeDetail.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="wwwroot\js\jquery-1.11.1.min.map" />
+    <Content Include="wwwroot\css\sass\layout\_content.scss" />
+    <Content Include="wwwroot\css\sass\layout\_footer.scss" />
+    <Content Include="wwwroot\css\sass\layout\_header.scss" />
+    <Content Include="wwwroot\css\sass\libs\bootstrap-grid\_grid.scss" />
+    <Content Include="wwwroot\css\sass\libs\bootstrap-grid\_mixins.scss" />
+    <Content Include="wwwroot\css\sass\libs\bootstrap-grid\_settings.scss" />
+    <Content Include="wwwroot\css\sass\libs\_components.scss" />
+    <Content Include="wwwroot\css\sass\libs\_global.scss" />
+    <Content Include="wwwroot\css\sass\libs\_mixins.scss" />
+    <Content Include="wwwroot\css\sass\libs\_normalize.scss" />
+    <Content Include="wwwroot\css\sass\libs\_settings.scss" />
+    <Content Include="wwwroot\css\sass\style.scss" />
+    <Content Include="wwwroot\css\style.css.map" />
+    <Content Include="wwwroot\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\fonts\icomoon.eot" />
+    <Content Include="wwwroot\fonts\icomoon.ttf" />
+    <Content Include="wwwroot\fonts\icomoon.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\css\sass\pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005061136190_FirstMig.resx">
+      <DependentUpon>202005061136190_FirstMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006141413392_14062020v1.resx">
+      <DependentUpon>202006141413392_14062020v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006141603142_14062020v2.resx">
+      <DependentUpon>202006141603142_14062020v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006160946282_myLastMig.resx">
+      <DependentUpon>202006160946282_myLastMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006161305492_16062020myMig.resx">
+      <DependentUpon>202006161305492_16062020myMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162153123_insLastMig.resx">
+      <DependentUpon>202006162153123_insLastMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162219050_myMig.resx">
+      <DependentUpon>202006162219050_myMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162234556_buSonMig.resx">
+      <DependentUpon>202006162234556_buSonMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162310287_buSonMig2.resx">
+      <DependentUpon>202006162310287_buSonMig2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162339245_myMig4.resx">
+      <DependentUpon>202006162339245_myMig4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006162350504_myMig5.resx">
+      <DependentUpon>202006162350504_myMig5.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64051</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44317/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

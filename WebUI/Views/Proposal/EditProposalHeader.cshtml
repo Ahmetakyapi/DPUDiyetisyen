@@ -1,0 +1,80 @@
+﻿@model WebUI.Models.ProposalHeader
+@{
+    ViewBag.Title = "EditProposalHeader";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Makale Ekle</h4>
+            <p class="card-description">
+                Makale Bilgileri
+            </p>
+            <form action="@Url.Action("EditProposalHeader", "Proposal")" method="post" enctype="multipart/form-data" class="forms-sample">
+                <div class="form-group">
+                    <label for="name">Makale Adı</label>
+                    <input type="text" class="form-control" id="name" value="@Model.name" name="name" placeholder="Makale Adı">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">İçerik</label>
+                    @Html.TextAreaFor(model => model.description, new { @class = "form-control", @rows = 20 })
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        // We can attach the `fileselect` event to all file inputs on the page
+        $(document).on('change', ':file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        // We can watch for our custom `fileselect` event like this
+        $(document).ready(function () {
+            $(':file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#imagePath').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
